@@ -14,7 +14,8 @@ class EquipeController extends Controller
      */
     public function index()
     {
-        //
+        $data = Equipe::all();
+        return view('pages.index', compact('data'));
     }
 
     /**
@@ -44,9 +45,10 @@ class EquipeController extends Controller
      * @param  \App\Models\Equipe  $equipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipe $equipe)
+    public function show($id)
     {
-        //
+        $equipeData = Equipe::find($id);
+        return view('pages.show', compact('equipeData'));
     }
 
     /**

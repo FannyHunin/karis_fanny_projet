@@ -22,7 +22,7 @@ class EquipeFactory extends Factory
     public function definition()
     {
         return [
-            "nom"=>$this->faker->name,
+            "nom"=>$this->faker->company,
             "ville"=>$this->faker->city,
             "pays"=>$this->faker->country,
             "joueurs_max"=>rand(1,10)
