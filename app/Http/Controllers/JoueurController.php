@@ -14,7 +14,7 @@ class JoueurController extends Controller
      */
     public function index()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -35,7 +35,25 @@ class JoueurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nomJoueur' => 'required|min:5|max:20',
+            'prenomJoueur' => 'required|min:5|max:20',
+            'ageJoueur' => 'required|integer|min:10|max:40',
+            'paysOrigine' => 'required',
+            'telephoneJoueur' => 'required|min:10|max:10',
+            'emailJoueur' => 'required',
+        ]);
+
+        $joueur = new Joueur();
+        $joueur->nom = $request->nomJoueur;
+        $joueur->prenom = $request->prenomJoueur;
+        $joueur->age = $request->ageJoueur;
+        $joueur->pays_origine = $request->paysOrigine;
+        $joueur->role = $request->roleJoueur;
+        $joueur->telephone = $request->telephoneJoueur;
+        $joueur->email = $request->emailJoueur;
+        $joueur->save();
+        return redirect()->back();
     }
 
     /**
