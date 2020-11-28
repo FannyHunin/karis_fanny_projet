@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Joueur;
+use App\Models\Equipe;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Equipe::factory(15)->create();
         Joueur::factory(20)->create();
     }
 }

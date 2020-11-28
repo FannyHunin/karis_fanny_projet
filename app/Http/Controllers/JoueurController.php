@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Joueur;
+use App\Models\Equipe;
 use Illuminate\Http\Request;
 
 class JoueurController extends Controller
@@ -14,7 +15,8 @@ class JoueurController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $joueurs = Joueur::all();
+        return view('pages.joueurs', compact('joueurs'));
     }
 
     /**
@@ -24,7 +26,8 @@ class JoueurController extends Controller
      */
     public function create()
     {
-        //
+        $dataEquipe = Equipe::all();
+        return view('pages.createJoueur', compact('dataEquipe'));
     }
 
     /**
@@ -39,7 +42,6 @@ class JoueurController extends Controller
             'nomJoueur' => 'required|min:5|max:20',
             'prenomJoueur' => 'required|min:5|max:20',
             'ageJoueur' => 'required|integer|min:10|max:40',
-            'paysOrigine' => 'required',
             'telephoneJoueur' => 'required|min:10|max:10',
             'emailJoueur' => 'required',
         ]);
@@ -48,10 +50,11 @@ class JoueurController extends Controller
         $joueur->nom = $request->nomJoueur;
         $joueur->prenom = $request->prenomJoueur;
         $joueur->age = $request->ageJoueur;
-        $joueur->pays_origine = $request->paysOrigine;
+        $joueur->pays_origine = $request->paysJoueur;
         $joueur->role = $request->roleJoueur;
         $joueur->telephone = $request->telephoneJoueur;
         $joueur->email = $request->emailJoueur;
+        $joueur->equipe_id = $request->equipeJoueur;
         $joueur->save();
         return redirect()->back();
     }

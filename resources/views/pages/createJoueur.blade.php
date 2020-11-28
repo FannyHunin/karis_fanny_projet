@@ -20,7 +20,11 @@
                         <input type="number" name="ageJoueur" class="w-25" value="{{old('ageJoueur')}}">
 
                         <label for="" class="mt-3">Pays d'origine : </label>
-                        <input type="text" name="paysOrigine" class="w-50" value="{{old('paysOrigine')}}">
+                        <select name="paysJoueur" class="w-75">
+                            @foreach ($dataEquipe as $item)
+                            <option value=" {{$item->pays}}">{{$item->pays}}</option>
+                            @endforeach
+                        </select>
 
                         <label for="" class="mt-3">Rôle : </label>
                         <select name="roleJoueur" class="w-50">
@@ -35,6 +39,13 @@
 
                         <label for="" class="mt-3">Email : </label>
                         <input type="email" name="emailJoueur" class="w-75" value="{{old('emailJoueur')}}">
+
+                        <label for="" class="mt-3">Choisir une Équipe : </label>
+                        <select name="equipeJoueur" class="w-75">
+                            @foreach ($dataEquipe as $item)
+                            <option value="{{$item->id}}">{{$item->nom}}</option>
+                            @endforeach
+                        </select>
 
                         <button class="btn btn-primary w-25 mt-4 mb-2">Créer</button>
                     </div>

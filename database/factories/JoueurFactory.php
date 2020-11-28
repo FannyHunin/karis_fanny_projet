@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Joueur;
+use App\Models\Equipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JoueurFactory extends Factory
@@ -29,7 +30,7 @@ class JoueurFactory extends Factory
             'role' => $this->faker->randomElement(array('avant', 'central', 'arrière', 'remplacant')),
             'telephone' => $this->faker->e164PhoneNumber,
             'email' => $this->faker->email,
-            'equipe_id' => $this->faker->unique()->numberBetween(1, 'App\Models\Joueur::count()'),
+            'equipe_id' => rand(1, 15)
         ];
     }
 }
