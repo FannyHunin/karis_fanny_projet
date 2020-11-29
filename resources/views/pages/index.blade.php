@@ -11,7 +11,9 @@
                     <h5 class="card-title text-danger">{{$equipe->nom}}</h5>
                     <p class="card-text">Nombre maximum de joueurs : {{$equipe->joueurs_max}}</p>
                 </div>
-                <a href="/show/{{$equipe->id}}">Voir les détails de l'équipe</a>
+                <a href="/show/{{$equipe->id}}" class="btn border border-muted p-2">Voir les détails de l'équipe</a>
+                <a href="/showJoueursEquipe/{{$equipe->id}}" class="btn border border-muted p-2">Voir les joueurs</a>
+
             </div>
         </div>
         @if ($loop->iteration % 3 == 0)

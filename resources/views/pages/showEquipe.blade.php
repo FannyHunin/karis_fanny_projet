@@ -11,7 +11,6 @@
       <p class="card-text">Nombre maximum de joueurs : {{$equipeData->joueurs_max}}</p>
       <div>
         <a href="/edit/{{$equipeData->id}}" class="btn border border-muted p-2">Editer</a>
-        <a href="/showJoueursEquipe/{{$equipeData->id}}" class="btn border border-muted text-danger p-2">voir les joueurs</a>
         <a href="/delete/{{$equipeData->id}}" class="btn border border-muted text-danger p-2">Supprimer</a>
       </div>
     </div>
