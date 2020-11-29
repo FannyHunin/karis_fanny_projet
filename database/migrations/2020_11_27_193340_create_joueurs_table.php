@@ -23,7 +23,7 @@ class CreateJoueursTable extends Migration
             $table->string('telephone', 20);
             $table->string('email', 30);
             $table->unsignedBigInteger('equipe_id');
-            $table->foreign('equipe_id')->references('id')->on('equipes');
+            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');
             $table->timestamps();
         });
     }

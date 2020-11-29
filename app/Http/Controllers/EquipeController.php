@@ -48,7 +48,7 @@ class EquipeController extends Controller
     public function show($id)
     {
         $equipeData = Equipe::find($id);
-        return view('pages.show', compact('equipeData'));
+        return view('pages.showEquipe', compact('equipeData'));
     }
 
     /**
@@ -57,9 +57,10 @@ class EquipeController extends Controller
      * @param  \App\Models\Equipe  $equipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Equipe $equipe)
+    public function edit($id)
     {
-        //
+        $newEquipe = Equipe::find($id);
+        return view('pages.editEquipe', compact('newEquipe'));
     }
 
     /**
@@ -69,9 +70,17 @@ class EquipeController extends Controller
      * @param  \App\Models\Equipe  $equipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipe $equipe)
+    public function update(Request $request, $id)
     {
-        //
+        $newEquipe = Equipe::find($id);
+        $newEquipe->nom = $request->nom;
+        $newEquipe->pays = $request->pays;
+        $newEquipe->ville = $request->ville;
+        $newEquipe->joueurs_max = $request->joueurs_max;
+
+        $newEquipe->save();
+
+        return redirect('show/' . $newEquipe->id);
     }
 
     /**
@@ -80,8 +89,11 @@ class EquipeController extends Controller
      * @param  \App\Models\Equipe  $equipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipe $equipe)
+    public function destroy($id)
     {
-        //
+        $newEquipe = Equipe::find($id);
+        $newEquipe->delete();
+
+        return redirect('/');
     }
 }
