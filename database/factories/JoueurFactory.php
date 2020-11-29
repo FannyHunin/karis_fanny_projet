@@ -26,6 +26,7 @@ class JoueurFactory extends Factory
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
             'age' => rand(10, 40),
+            'genre' => $this->faker->randomElement(['Homme', 'Femme']),
             'pays_origine' => $this->faker->country,
             'role' => $this->faker->randomElement(array('avant', 'central', 'arrière', 'remplacant')),
             'telephone' => $this->faker->e164PhoneNumber,

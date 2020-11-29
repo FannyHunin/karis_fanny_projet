@@ -1,7 +1,7 @@
 @extends('template.template')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-4">
     <div>
         <div class="row">
             <div class="col-6">
@@ -18,6 +18,12 @@
 
                         <label for="" class="mt-3">Age : </label>
                         <input type="number" name="ageJoueur" class="w-25" value="{{old('ageJoueur')}}">
+
+                        <label for="" class="mt-3">Genre : </label>
+                        <select name="genreJoueur" class="w-25">
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+                        </select>
 
                         <label for="" class="mt-3">Pays d'origine : </label>
                         <select name="paysJoueur" class="w-75">
