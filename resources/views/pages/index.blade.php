@@ -19,8 +19,8 @@
             </div>
         </div>
         @if ($loop->iteration % 3 == 0)
-    </div>
-    <div class="row m-0 mt-4 pb-4">
+            </div>
+            <div class="row m-0 mt-4 pb-4">
         @endif
         @endforeach
     </div>
