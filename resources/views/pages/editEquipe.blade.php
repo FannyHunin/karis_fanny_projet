@@ -3,6 +3,7 @@
 @section('content')
 <form action="/update/{{$newEquipe->id}}" method="post" class="mt-3">
     @csrf
+    <h1 class="text-center mt-5 pb-5">Edit Equipe</h1>
     <div class="card border-dark p-3 px-5" style="width: 30rem;">
         <label for="" class="mt-3">Nom de l'équipe : </label>
         <input type="text" class="w-50" name="nom" value="{{$newEquipe->nom}}">

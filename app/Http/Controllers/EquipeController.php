@@ -15,8 +15,9 @@ class EquipeController extends Controller
      */
     public function index()
     {
+        $joueurs = Joueur::all();
         $data = Equipe::all();
-        return view('pages.index', compact('data'));
+        return view('pages.index', compact('data', 'joueurs'));
     }
 
     /**
@@ -52,7 +53,8 @@ class EquipeController extends Controller
         return view('pages.showEquipe', compact('equipeData'));
     }
 
-    public function showJE($id){
+    public function showJE($id)
+    {
         $equipeData = Equipe::find($id);
         $joueurData = Joueur::all();
         return view('pages.showJoueursEquipe', compact('joueurData', 'equipeData'));
@@ -84,7 +86,6 @@ class EquipeController extends Controller
         $newEquipe->pays = $request->pays;
         $newEquipe->ville = $request->ville;
         $newEquipe->joueurs_max = $request->joueurs_max;
-
         $newEquipe->save();
 
         return redirect('show/' . $newEquipe->id);
@@ -100,7 +101,6 @@ class EquipeController extends Controller
     {
         $newEquipe = Equipe::find($id);
         $newEquipe->delete();
-
         return redirect('/');
     }
 }

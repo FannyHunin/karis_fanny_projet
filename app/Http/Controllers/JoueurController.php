@@ -26,6 +26,7 @@ class JoueurController extends Controller
      */
     public function create()
     {
+
         $dataEquipe = Equipe::all();
         return view('pages.createJoueur', compact('dataEquipe'));
     }
@@ -120,8 +121,10 @@ class JoueurController extends Controller
         $newDelete->delete();
         return redirect('/joueurs');
     }
-    public function redirectJoueur($equipe_id){
+
+    public function redirectJoueur($equipe_id)
+    {
         $redirect = Joueur::find($equipe_id);
-        return redirect("showJoueursEquipe/".$redirect->equipe_id);
+        return redirect("showJoueursEquipe/" . $redirect->equipe_id);
     }
 }
