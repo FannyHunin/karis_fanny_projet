@@ -50,6 +50,7 @@ class JoueurController extends Controller
         $joueur->nom = $request->nomJoueur;
         $joueur->prenom = $request->prenomJoueur;
         $joueur->age = $request->ageJoueur;
+        $joueur->genre = $request->genreJoueur;
         $joueur->pays_origine = $request->paysJoueur;
         $joueur->role = $request->roleJoueur;
         $joueur->telephone = $request->telephoneJoueur;
@@ -65,9 +66,10 @@ class JoueurController extends Controller
      * @param  \App\Models\Joueur  $joueur
      * @return \Illuminate\Http\Response
      */
-    public function show(Joueur $joueur)
+    public function show(Joueur $joueur, $id)
     {
-        //
+        $showJoueur = Joueur::find($id);
+        return view('pages.showJoueurs', compact('showJoueur'));
     }
 
     /**
@@ -76,9 +78,11 @@ class JoueurController extends Controller
      * @param  \App\Models\Joueur  $joueur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Joueur $joueur)
+    public function edit(Joueur $joueur, $id)
     {
-        //
+        $dataEquipe = Equipe::all();
+        $edit = Joueur::find($id);
+        return view('pages.editJoueurs', compact('edit', 'dataEquipe'));
     }
 
     /**
@@ -88,9 +92,20 @@ class JoueurController extends Controller
      * @param  \App\Models\Joueur  $joueur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Joueur $joueur)
+    public function update(Request $request, Joueur $joueur, $id)
     {
-        //
+        $joueur = Joueur::find($id);
+        $joueur->nom = $request->editNomJoueur;
+        $joueur->prenom = $request->editPrenomJoueur;
+        $joueur->age = $request->editAgeJoueur;
+        $joueur->genre = $request->editGenreJoueur;
+        $joueur->pays_origine = $request->editPaysJoueur;
+        $joueur->role = $request->editRoleJoueur;
+        $joueur->telephone = $request->editTelephoneJoueur;
+        $joueur->email = $request->editEmailJoueur;
+        $joueur->equipe_id = $request->editEquipeJoueur;
+        $joueur->save();
+        return redirect()->back();
     }
 
     /**
@@ -99,8 +114,10 @@ class JoueurController extends Controller
      * @param  \App\Models\Joueur  $joueur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Joueur $joueur)
+    public function destroy(Joueur $joueur, $id)
     {
-        //
+        $newDelete = Joueur::find($id);
+        $newDelete->delete();
+        return redirect('/joueurs');
     }
 }
