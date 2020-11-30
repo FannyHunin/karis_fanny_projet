@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [EquipeController::class, 'index']);
+Route::get('/createEquipe', [EquipeController::class, 'create']);
+Route::post('/store-equipe', [EquipeController::class, 'store']);
 Route::get('/show/{id}', [EquipeController::class, 'show']);
 Route::get('/showJoueursEquipe/{id}', [EquipeController::class, 'showJE']);
 Route::get('/edit/{id}', [EquipeController::class, 'edit']);
