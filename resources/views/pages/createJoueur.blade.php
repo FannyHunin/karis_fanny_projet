@@ -58,7 +58,7 @@
                 </form>
             </div>
             <div class="col-6">
-                <div class="card border-dark p-3 px-5" style="width: 40rem; height: 15rem;">
+                <div class="card mb-4 border-dark p-3 px-5" style="width: 40rem; height: 15rem;">
                     <h2 class="text-center mb-5">Ajouter une Photo</h2>
                     <form action="/upload-photo" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -75,13 +75,18 @@
                     </ul>
                 </div>
                 @endif
-                @if (session('status'))
-                <div class="alert alert-danger">
-                    {{ session('status') }}
-                </div>
-                @endif
+
+                {{-- @foreach ($dataEquipe as $equipe)
+                    @if($equipe->joueurs->count() == $equipe->pluck('joueurs_max'))
+                        @if (session('status'))
+                        <div class="alert alert-danger">
+                            {{ session('status') }}
             </div>
+            @endif
+            @endif
+            @endforeach --}}
         </div>
     </div>
+</div>
 </div>
 @stop

@@ -126,7 +126,6 @@ class JoueurController extends Controller
 
     public function redirectJoueur($equipe_id)
     {
-        $photo = Photo::all();
         $redirect = Joueur::find($equipe_id);
         return redirect("showJoueursEquipe/" . $redirect->equipe_id);
     }
