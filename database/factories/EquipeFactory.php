@@ -24,7 +24,12 @@ class EquipeFactory extends Factory
         return [
             "nom" => $this->faker->company,
             "ville" => $this->faker->city,
-            "pays" => $this->faker->country,
+            "pays" => $this->faker->randomElement(
+                [
+                    'Allemagne', 'Belgique', 'Autriche', 'Bulgarie', 'Chypre', 'Croatie', 'Danemark', 'Australie',
+                    'Japon', 'Nouvelle-Zélande', 'Rwanda', 'Singapour', 'Corée du Sud', 'Thaïlande', 'Uruguay'
+                ]
+            ),
             "joueurs_max" => rand(1, 10)
         ];
     }

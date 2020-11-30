@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipe;
 use App\Models\Joueur;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class EquipeController extends Controller
@@ -57,7 +58,8 @@ class EquipeController extends Controller
     {
         $equipeData = Equipe::find($id);
         $joueurData = Joueur::all();
-        return view('pages.showJoueursEquipe', compact('joueurData', 'equipeData'));
+        $photos = Photo::all();
+        return view('pages.showJoueursEquipe', compact('joueurData', 'equipeData', 'photos'));
     }
 
     /**

@@ -10,7 +10,7 @@
             <a class="nav-link text-white" href="/joueurs">Joueurs</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="#">Dashboard</a>
+            <a class="nav-link text-white" href="/dashboard">Dashboard</a>
         </li>
     </ul>
 </div>

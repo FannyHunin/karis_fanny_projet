@@ -32,3 +32,5 @@ Route::get('/edit-joueurs/{id}', [JoueurController::class, 'edit']);
 Route::post('/update-joueurs/{id}', [JoueurController::class, 'update']);
 Route::get('/delete-joueur/{id}', [JoueurController::class, 'destroy']);
 Route::get('/redirect/{equipe_id}', [JoueurController::class, 'redirectJoueur']);
+Route::get('/dashboard', [JoueurController::class, 'dashboard']);
+Route::post('/upload-photo', [JoueurController::class, 'upload']);

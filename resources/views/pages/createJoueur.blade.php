@@ -8,7 +8,7 @@
                 <form action="/store-joueur" method="post" class="d-flex flex-column mr-4">
                     @csrf
                     <div class="card border-dark p-3 px-5" style="width: 30rem;">
-                        <h1 class="text-center">Ajouter un Joueur</h1>
+                        <h2 class="text-center">Ajouter un Joueur</h2>
 
                         <label for="" class="mt-3">Nom : </label>
                         <input type="text" name="nomJoueur" class="w-50" value="{{old('nomJoueur')}}">
@@ -58,6 +58,14 @@
                 </form>
             </div>
             <div class="col-6">
+                <div class="card border-dark p-3 px-5" style="width: 40rem; height: 15rem;">
+                    <h2 class="text-center mb-5">Ajouter une Photo</h2>
+                    <form action="/upload-photo" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="photo">
+                        <button class="btn btn-primary d-flex mt-3">Upload</button>
+                    </form>
+                </div>
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -65,6 +73,11 @@
                         <li>{{ $error }}</li>
                         @endforeach
                     </ul>
+                </div>
+                @endif
+                @if (session('status'))
+                <div class="alert alert-danger">
+                    {{ session('status') }}
                 </div>
                 @endif
             </div>

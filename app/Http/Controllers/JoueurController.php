@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Joueur;
 use App\Models\Equipe;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class JoueurController extends Controller
@@ -16,7 +17,8 @@ class JoueurController extends Controller
     public function index()
     {
         $joueurs = Joueur::all();
-        return view('pages.joueurs', compact('joueurs'));
+        $photos = Photo::all();
+        return view('pages.joueurs', compact('joueurs', 'photos'));
     }
 
     /**
@@ -26,7 +28,6 @@ class JoueurController extends Controller
      */
     public function create()
     {
-
         $dataEquipe = Equipe::all();
         return view('pages.createJoueur', compact('dataEquipe'));
     }
@@ -58,7 +59,7 @@ class JoueurController extends Controller
         $joueur->email = $request->emailJoueur;
         $joueur->equipe_id = $request->equipeJoueur;
         $joueur->save();
-        return redirect()->back();
+        return redirect()->back()->with('status', "Plus de places dans l'Equipe ! ");
     }
 
     /**
@@ -70,7 +71,8 @@ class JoueurController extends Controller
     public function show(Joueur $joueur, $id)
     {
         $showJoueur = Joueur::find($id);
-        return view('pages.showJoueurs', compact('showJoueur'));
+        $photos = Photo::all();
+        return view('pages.showJoueurs', compact('showJoueur', 'photos'));
     }
 
     /**
@@ -124,7 +126,24 @@ class JoueurController extends Controller
 
     public function redirectJoueur($equipe_id)
     {
+        $photo = Photo::all();
         $redirect = Joueur::find($equipe_id);
         return redirect("showJoueursEquipe/" . $redirect->equipe_id);
+    }
+
+    public function dashboard()
+    {
+        $equipes = Equipe::all();
+        $joueurs = Joueur::all();
+        return view('pages.dashboard', compact('equipes', 'joueurs'));
+    }
+
+    public function upload(Request $request)
+    {
+        $img = new Photo();
+        $img->src = $request->file('photo')->hashName();
+        $img->save();
+        $request->file('photo')->storePublicly('images', 'public');
+        return redirect()->back();
     }
 }

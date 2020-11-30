@@ -12,7 +12,12 @@
                 <h5 class="card-title font-weight-bolder text-primary">Nom : {{$joueur->nom}}</h5>
                 <h5 class="card-title font-weight-bolder text-primary">Prenom : {{$joueur->prenom}}</h5>
                 <h5 class="card-title font-weight-bolder text-primary">Rôle : {{$joueur->role}}</h5>
-                <h5 class="card-title font-weight-bolder text-primary">Genre : {{$joueur->genre}}</h5>
+                <h5 class="card-title font-weight-bolder text-primary mb-4">Genre : {{$joueur->genre}}</h5>
+                <div class="d-flex justify-content-center align-items-center">
+                    @foreach ($photos as $photo)
+                    <img src="{{asset('images/'.$photo->src)}}" alt="" height="260" width="200">
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
