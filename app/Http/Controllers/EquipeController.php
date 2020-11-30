@@ -27,7 +27,8 @@ class EquipeController extends Controller
      */
     public function create()
     {
-        //
+        $dataEquipe = Equipe::all();
+        return view('pages.createEquipe', compact('dataEquipe'));
     }
 
     /**
@@ -38,7 +39,22 @@ class EquipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newEquipe = new Equipe;
+
+        $request->validate([
+            'nom' => 'required|min:5|max:20',
+            'ville' => 'required|max:40',
+            'joueurs_max' => 'required|integer|min:1|max:10',
+        ]);
+
+        $newEquipe->nom = $request->nom;
+        $newEquipe->pays = $request->pays;
+        $newEquipe->ville = $request->ville;
+        $newEquipe->joueurs_max = $request->joueurs_max;
+
+        $newEquipe->save();
+
+        return redirect()->back();
     }
 
     /**
